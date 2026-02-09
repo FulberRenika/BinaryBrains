@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Emergency Reporter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">⚡</div>
+      <div>
+        <div class="title">AI Emergency Reporter</div>
+        <div class="subtitle">Report fast • AI routes instantly • Track status live</div>
+      </div>
+    </div>
+    <div class="pill">Vibe-a-Thon 2026 Demo</div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>One report.<br><span>Instant routing</span> to the right team.</h1>
+        <p>
+          Submit description + proof. AI detects <b>Police / Ambulance / Fire</b>,
+          estimates severity, generates an alert with timestamp, and shows real-time response status.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-big">3</div>
+            <div class="stat-small">Departments</div>
+          </div>
+          <div class="stat">
+            <div class="stat-big">4</div>
+            <div class="stat-small">Severity levels</div>
+          </div>
+          <div class="stat">
+            <div class="stat-big">6</div>
+            <div class="stat-small">Live statuses</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="notice">
+          <div class="notice-icon">🚨</div>
+          <div>
+            <div class="notice-title">Emergency? Stay calm.</div>
+            <div class="notice-text">Describe clearly. Upload proof if possible.</div>
+          </div>
+        </div>
+
+        <div class="quick-row">
+          <button class="chip fire" onclick="fillSample('There is a big fire and smoke in hostel kitchen, people are trapped!')">🔥 Fire</button>
+          <button class="chip medical" onclick="fillSample('Road accident, heavy bleeding, person unconscious and not breathing!')">🩺 Medical</button>
+          <button class="chip police" onclick="fillSample('Robbery threat near gate, person holding knife, need help!')">👮 Police</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <!-- REPORT CARD -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Report an Emergency</div>
+          <div class="card-badge">Secure • Fast • AI-assisted</div>
+        </div>
+
+        <form id="reportForm" class="form">
+          <label class="label">Incident description</label>
+          <textarea id="description" name="description" class="textarea"
+            placeholder="Example: Accident near main gate, person unconscious, heavy bleeding..."></textarea>
+
+          <div class="row">
+            <div class="field">
+              <label class="label">Upload proof (image/video)</label>
+              <div class="upload">
+                <input type="file" id="media" name="media" accept="image/*,video/*" />
+                <div class="upload-meta">
+                  <div class="upload-title">Drag & drop or click to upload</div>
+                  <div class="upload-sub">Accepted: JPG/PNG/MP4 • Optional</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Optional details</label>
+              <div class="mini">
+                <div class="mini-row">
+                  <span>📍 Location</span>
+                  <input class="input" placeholder="Eg: Hostel Block A" disabled />
+                </div>
+                <div class="mini-row">
+                  <span>☎ Contact</span>
+                  <input class="input" placeholder="Eg: 98765xxxxx" disabled />
+                </div>
+                <div class="mini-note">*(Demo: inputs disabled for speed)*</div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">
+            <span class="btn-icon">✨</span>
+            <span>Analyze & Send Alert</span>
+          </button>
+
+          <div class="hint">
+            Tip: Use clear keywords like <b>fire</b>, <b>accident</b>, <b>unconscious</b>, <b>weapon</b> for accurate routing.
+          </div>
+        </form>
+      </div>
+
+      <!-- RESULTS CARD -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">AI Output & Live Tracking</div>
+          <div class="card-badge">Auto-generated alert</div>
+        </div>
+
+        <div class="result-box">
+          <div class="pill-row">
+            <div id="deptPill" class="pill muted">Departments: —</div>
+            <div id="sevPill" class="pill muted">Severity: —</div>
+            <div id="timePill" class="pill muted">Timestamp: —</div>
+          </div>
+
+          <div id="message" class="message muted">
+            Submit a report to see AI analysis and generated alert message.
+          </div>
+        </div>
+
+        <div class="tracker">
+          <div class="tracker-head">
+            <div class="tracker-title">Live response status</div>
+            <div id="statusText" class="status muted">No active request</div>
+          </div>
+
+          <div class="stepper" id="stepper">
+            <div class="step"><div class="dot"></div><div class="txt">Request Received</div></div>
+            <div class="step"><div class="dot"></div><div class="txt">Preparing</div></div>
+            <div class="step"><div class="dot"></div><div class="txt">Team Dispatched</div></div>
+            <div class="step"><div class="dot"></div><div class="txt">On the Way</div></div>
+            <div class="step"><div class="dot"></div><div class="txt">Action in Progress</div></div>
+            <div class="step"><div class="dot"></div><div class="txt">Resolved</div></div>
+          </div>
+
+          <div class="legend">
+            <span class="lg"><span class="sq todo"></span> Pending</span>
+            <span class="lg"><span class="sq active"></span> Current</span>
+            <span class="lg"><span class="sq done"></span> Done</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
